@@ -6,10 +6,10 @@ interface ButtonProps {
   className?: string;
 }
 
-const Button: React.FC<ButtonProps> = ({ value, onClick }) => {
+const Button: React.FC<ButtonProps> = ({ value, onClick, className }) => {
   return (
-    <button 
-      className="p-4 bg-gray-300 rounded-lg shadow-md hover:bg-gray-400 active:bg-gray-500 transition-colors duration-200 text-lg text-black"
+    <button
+      className={`bg-gray-700 hover:bg-gray-600 text-white rounded-lg ${className}`}
       onClick={() => onClick(value)}
     >
       {value}

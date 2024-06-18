@@ -2,6 +2,7 @@ import React from 'react';
 
 interface DisplayProps {
   value: string;
+  className?: string;
 }
 
 const Display: React.FC<DisplayProps> = ({ value }) => {
