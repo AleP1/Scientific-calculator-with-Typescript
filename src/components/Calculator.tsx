@@ -20,9 +20,7 @@ const Calculator: React.FC = () => {
         if (result !== Error) {
         dispatch(addToHistory(input + ' = ' + result));
         dispatch(setInput(result.toString()));
-        console.log(typeof result);
         }else{
-          console.log('Error');
           dispatch(setInput('Intenta otra operación'));
         }
       } catch (error) {

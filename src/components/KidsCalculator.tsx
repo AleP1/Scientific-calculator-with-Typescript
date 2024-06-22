@@ -21,9 +21,13 @@ const KidsCalculator: React.FC<KidsCalculatorProps> = ({ colorOption }) => {
       dispatch(removeLastInput());
     } else if (value === '=') {
       try {
-        const result = eval(input); // Nota: eval no es seguro para producción
+        const result = eval(input);
+        if (result !== Error) {
         dispatch(addToHistory(input + ' = ' + result));
         dispatch(setInput(result.toString()));
+        }else{
+          dispatch(setInput('Intenta otra operación'));
+        }
       } catch (error) {
         dispatch(setInput('Error'));
       }
@@ -65,7 +69,7 @@ const KidsCalculator: React.FC<KidsCalculatorProps> = ({ colorOption }) => {
       <Display value={input} className="text-3xl" />
       <div className="grid grid-cols-4 gap-4 text-black">
         {['7', '8', '9', 'DEL', '4', '5', '6', '/', '1', '2', '3', '*', '0', '.', '=', '+', 'C', '-'].map((value) => (
-          <Button key={value} value={value} onClick={handleButtonClick} className="text-2xl bg-blue-300 hover:bg-blue-400 p-4 rounded-full shadow-lg" />
+          <Button key={value} value={value} onClick={handleButtonClick} className="text-2xl bg-blue-300 hover:bg-blue-400 p-4 rounded-full shadow-lg bounce-in-fwd" />
         ))}
       </div>
     </div>

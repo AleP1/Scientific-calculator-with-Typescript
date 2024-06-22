@@ -17,8 +17,12 @@ const ScientificCalculator: React.FC = () => {
     } else if (value === '=') {
       try {
         const result = eval(input); // Nota: eval no es seguro para producción
+        if (result !== Error) {
         dispatch(addToHistory(input + ' = ' + result));
         dispatch(setInput(result.toString()));
+        }else{
+          dispatch(setInput('Intenta otra operación'));
+        }
       } catch (error) {
         dispatch(setInput('Error'));
       }
